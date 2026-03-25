@@ -35,21 +35,31 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 p-10">
-      <h1 className="text-3xl font-bold text-center mb-6">DevFinder</h1>
-      <p className="text-center text-gray-500 mb-6">
-        Discover GitHub developers and explore their work
+    <div className="min-h-screen bg-[#f8fafc] p-10">
+      <h1 className="text-3xl font-bold text-center mb-2 text-gray-900">
+        DevFinder
+      </h1>
+      <p className="text-center text-gray-500 mb-8">
+        Discover GitHub developers and explore their repositories
       </p>
 
-      <SearchBar onSearch={handleSearch} />
+      <div className="max-w-4xl mx-auto">
+        <SearchBar onSearch={handleSearch} />
 
-      {loading && <LoadingSkeleton />}
+        <div className="mt-6">
+          {loading && <LoadingSkeleton />}
 
-      {error && <ErrorState message={error} />}
+          {error && <ErrorState message={error} />}
 
-      {user && <UserCard user={user} />}
+          {user && <UserCard user={user} />}
+        </div>
 
-      {repos.length > 0 && <RepoList repos={repos} />}
+        {repos.length > 0 && (
+          <div className="mt-6">
+            <RepoList repos={repos} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

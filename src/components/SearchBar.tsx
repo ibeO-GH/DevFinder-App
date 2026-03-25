@@ -4,30 +4,32 @@ import { FiSearch } from "react-icons/fi";
 const SearchBar = ({ onSearch }: { onSearch: (value: string) => void }) => {
   const [input, setInput] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     if (!input.trim()) return;
-    onSearch(input.trim());
+    onSearch(input);
   };
 
   return (
-    <div className="max-w-xl mx-auto flex items-center bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-2xl mx-auto flex items-center bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 transition"
+    >
+      <FiSearch className="text-gray-400 text-xl mr-3" />
       <input
         type="text"
         placeholder="Search GitHub username (e.g. torvalds)"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-        className="flex-1 px-4 py-3 outline-none text-gray-700"
-        autoFocus
+        className="flex-1 outline-none text-gray-800 placeholder-gray-400 bg-transparent"
       />
       <button
-        onClick={handleSubmit}
-        className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-3 flex items-center gap-2 transition"
+        type="submit"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition"
       >
-        <FiSearch />
         Search
       </button>
-    </div>
+    </form>
   );
 };
 

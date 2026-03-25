@@ -2,7 +2,7 @@ import type { GitHubUser } from "../types/github";
 
 const UserCard = ({ user }: { user: GitHubUser }) => {
   return (
-    <div className="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-lg p-6 border border-gray-200 transition hover:shadow-xl hover:-translate-y-1">
+    <div className="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-sm p-6 border border-gray-200 transition hover:shadow-lg hover:-translate-y-1">
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img
           src={user.avatar_url}

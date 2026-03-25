@@ -18,7 +18,7 @@ const RepoList = ({ repos }: { repos: Repo[] }) => {
             key={repo.id}
             href={repo.html_url}
             target="_blank"
-            className="block bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md hovver:-translate-y-1 transition"
+            className="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 transition"
           >
             <p className="font-medium text-blue-600">{repo.name}</p>
           </a>
